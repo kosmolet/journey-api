@@ -1,0 +1,58 @@
+{
+  "name": "journey-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test nyc mocha --recursive src/test/ --timeout 10000",
+    "coverage": "nyc report --reporter=lcov --reporter=text",
+    "dev": "cross-env LOG_LEVEL=debug NODE_ENV=development nodemon | pino-pretty",
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "lint": "eslint \"src/**/*.js\"",
+    "seedDb": "node seed-db/import.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint -- --fix"
+    }
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kosmolet/journey-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^5.0.0",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.8",
+    "passport": "^0.4.1",
+    "pino": "^6.8.0",
+    "pino-http": "^5.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.0",
+    "husky": "^4.3.6",
+    "mocha": "^8.2.1",
+    "mongo-seeding": "^3.5.0",
+    "nodemon": "^2.0.6",
+    "nyc": "^15.1.0",
+    "pino-pretty": "^4.3.0",
+    "prettier": "^2.2.1",
+    "supertest": "^6.0.1"
+  }
+}
